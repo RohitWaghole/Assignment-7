@@ -1,0 +1,29 @@
+{
+  "name": "a3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.0.1",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node src/app.js",
+    "dev":"nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashkholapure/iauro-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashkholapure/iauro-api/issues"
+  },
+  "homepage": "https://github.com/yashkholapure/iauro-api#readme"
+}

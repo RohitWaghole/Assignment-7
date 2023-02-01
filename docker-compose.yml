@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  mysqldb:
+    container_name: mysqlcontainer
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./docker-seed.sql:/docker-entrypoint-initdb.d/docker-seed.sql
+      - test_volume:/var/lib/root/data
+
+    environment:
+      MYSQL_DATABASE: myMysql
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: rohit@11
+      MYSQL_ROOT_PASSWORD: rohit@11
+      SERVICE_NAME: mysqldb
+
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+
+  api:
+    build: .
+    ports:
+      - "4000:5000"
+
+    environment:
+      PORT: 5000
+      MONGODB_URI: mongodb://mongo_db:27017/myMongoDb
+
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}
+  test_volume: {}
